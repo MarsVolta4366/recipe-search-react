@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import RecipeGallery from './components/RecipeGallery';
+import SearchBar from './components/SearchBar';
 
 function App() {
+
+  let [search, setSearch] = useState("")
+  let [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&apiKey=a40e27eb395e4e92a5f5dcb1c521082b`)
+      const resData = await response.json()
+      setData(resData)
+      console.log(resData.results)
+    }
+    fetchData()
+  }, [search])
+
+  function searchForRecipes(input) {
+    setSearch(input)
+  }
+
+  function renderGallery() {
+    return (
+      <RecipeGallery data={data} />
+    )
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SearchBar searchForRecipes={searchForRecipes} />
+      {renderGallery()}
     </div>
   );
 }

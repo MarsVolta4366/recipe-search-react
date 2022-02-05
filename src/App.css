@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+#myFlexBox {
+  display: flex;
+  /* height: 600px; */
+  flex-wrap: wrap;
+  align-content: space-between;
+  background-color: DodgerBlue;
+  justify-content: center;
+}
+
+#myFlexBox>div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  text-align: center;
+}
