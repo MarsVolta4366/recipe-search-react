@@ -26,15 +26,16 @@ function App() {
 
   function renderGallery() {
     return (
-      <RecipeGallery data={data} />
+      <div>
+        <RecipeGallery data={data} />
+      </div>
     )
   }
 
   return (
     <div className="App">
-      <SearchBar searchForRecipes={searchForRecipes} />
-
       <Router>
+        <SearchBar searchForRecipes={searchForRecipes} />
         <Routes>
           <Route path="/" element={
             renderGallery()

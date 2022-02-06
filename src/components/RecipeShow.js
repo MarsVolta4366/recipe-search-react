@@ -1,7 +1,7 @@
 // Model show page like https://www.foodnetwork.com/recipes/giada-de-laurentiis/israeli-couscous-salad-with-smoked-paprika-recipe-2043334
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { ListGroup } from "react-bootstrap"
+import { useParams, useNavigate } from "react-router-dom"
+import { Button, ListGroup } from "react-bootstrap"
 
 const RecipeShow = (props) => {
 
@@ -10,6 +10,7 @@ const RecipeShow = (props) => {
 
     let ingredients = []
     let instructions = []
+    let navigate = useNavigate()
 
     if (recipe.extendedIngredients) {
         ingredients = recipe.extendedIngredients.map((ingredient, index) => {
@@ -39,6 +40,7 @@ const RecipeShow = (props) => {
 
     return (
         <div>
+            <Button onClick={() => navigate(-1)}>Back to Results</Button>
             <h1>{recipe.title}</h1>
             <img src={recipe.image} alt={`Image of ${recipe.title}`} />
             <ul>
