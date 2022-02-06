@@ -1,10 +1,31 @@
+// Model show page like https://www.foodnetwork.com/recipes/giada-de-laurentiis/israeli-couscous-salad-with-smoked-paprika-recipe-2043334
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { ListGroup } from "react-bootstrap"
 
 const RecipeShow = (props) => {
 
     const { recipeId } = useParams()
     let [recipe, setRecipe] = useState({})
+
+    let ingredients = []
+    let instructions = []
+
+    if (recipe.extendedIngredients) {
+        ingredients = recipe.extendedIngredients.map((ingredient, index) => {
+            return (
+                <ListGroup.Item key={index}>{ingredient.original}</ListGroup.Item>
+            )
+        })
+    }
+
+    if (recipe.analyzedInstructions) {
+        instructions = recipe.analyzedInstructions[0].steps.map((step, index) => {
+            return (
+                <ListGroup.Item key={index} as="li">{step.step}</ListGroup.Item>
+            )
+        })
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,6 +58,18 @@ const RecipeShow = (props) => {
                     {recipe.servings} servings
                 </li>
             </ul>
+            <div>
+                <h1>Ingredients</h1>
+                <ListGroup>
+                    {ingredients}
+                </ListGroup>
+            </div>
+            <div>
+                <h1>Instructions</h1>
+                <ListGroup as="ol" numbered>
+                    {instructions}
+                </ListGroup>
+            </div>
         </div>
     )
 }
