@@ -1,5 +1,5 @@
-import GalleryItem from "./GalleryItem"
 import { Card, Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const RecipeGallery = (props) => {
 
@@ -13,7 +13,9 @@ const RecipeGallery = (props) => {
                         <Card.Img variant="top" src={recipe.image} alt={`Image of ${recipe.title}`} />
                         <Card.Body>
                             <Card.Title>{recipe.title}</Card.Title>
-                            <Button variant="primary">Get Recipe</Button>
+                            <Link to={`/showRecipe/${recipe.id}`}>
+                                <Button variant="primary">Get Recipe</Button>
+                            </Link>
                         </Card.Body>
                     </Card>
                 </div>

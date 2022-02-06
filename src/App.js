@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import RecipeGallery from './components/RecipeGallery';
 import SearchBar from './components/SearchBar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import RecipeShow from './components/RecipeShow';
 
 function App() {
 
@@ -31,7 +33,17 @@ function App() {
   return (
     <div className="App">
       <SearchBar searchForRecipes={searchForRecipes} />
-      {renderGallery()}
+
+      <Router>
+        <Routes>
+          <Route path="/" element={
+            renderGallery()
+          } />
+          <Route path="/showRecipe/:recipeId" element={
+            <RecipeShow />
+          } />
+        </Routes>
+      </Router>
     </div>
   );
 }

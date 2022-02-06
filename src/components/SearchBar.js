@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
 const SearchBar = (props) => {
 
     let [input, setInput] = useState("")
