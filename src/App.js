@@ -22,9 +22,10 @@ function App() {
       console.log(data)
 
       // If data is an object, this means the limit of requests allowed has been reached
-      if (typeof data === "object") {
-        setShow(true)
-      }
+      // if (data.number > 0) {
+      // } else {
+      //   setShow(true)
+      // }
     }
     fetchData()
   }, [search])

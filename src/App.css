@@ -8,15 +8,15 @@
 }
 
 #searchBar {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #myFlexBox {
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
-  background-color: DodgerBlue;
+  background-color: #F8F9FA;
   justify-content: center;
 }
 

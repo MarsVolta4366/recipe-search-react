@@ -1,7 +1,7 @@
 // Model show page like https://www.foodnetwork.com/recipes/giada-de-laurentiis/israeli-couscous-salad-with-smoked-paprika-recipe-2043334
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { Button, ListGroup } from "react-bootstrap"
+import { Button, ListGroup, Table } from "react-bootstrap"
 
 const RecipeShow = (props) => {
 
@@ -40,35 +40,38 @@ const RecipeShow = (props) => {
 
     return (
         <div>
-            <Button onClick={() => navigate(-1)}>Back to Results</Button>
-            <h1>{recipe.title}</h1>
             <img src={recipe.image} alt={`Image of ${recipe.title}`} />
-            <ul>
-                <li>
-                    {recipe.dairyFree ? "Dairy Free" : "Has Dairy"}
-                </li>
-                <li>
-                    {recipe.glutenFree ? "Gluten Free" : "Has Gluten"}
-                </li>
-                <li>
-                    {recipe.vegetarian ? "Vegetarian" : "Not Vegetarian"}
-                </li>
-                <li>
-                    Ready in {recipe.readyInMinutes} minutes
-                </li>
-                <li>
-                    {recipe.servings} servings
-                </li>
-            </ul>
+            <h1>{recipe.title}</h1>
+            <Button onClick={() => navigate(-1)} style={{marginBottom: "10px"}}>Back to Results</Button>
+            <Table striped bordered hover variant="light">
+                <thead>
+                    <tr>
+                        <th>Dairy Free</th>
+                        <th>Gluten Free</th>
+                        <th>Vegetarian</th>
+                        <th>Ready in</th>
+                        <th>Amount of Servings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{recipe.dairyFree ? "Yes" : "No"}</td>
+                        <td>{recipe.glutenFree ? "Yes" : "No"}</td>
+                        <td>{recipe.vegetarian ? "Yes" : "No"}</td>
+                        <td>{recipe.readyInMinutes} Minutes</td>
+                        <td>{recipe.servings} Servings</td>
+                    </tr>
+                </tbody>
+            </Table>
             <div>
-                <h1>Ingredients</h1>
-                <ListGroup>
+                <h1 style={{textAlign: "left"}}>Ingredients</h1>
+                <ListGroup style={{textAlign: "left"}}>
                     {ingredients}
                 </ListGroup>
             </div>
             <div>
-                <h1>Instructions</h1>
-                <ListGroup as="ol" numbered>
+                <h1 style={{textAlign: "left"}}>Instructions</h1>
+                <ListGroup as="ol" numbered style={{textAlign: "left"}}>
                     {instructions}
                 </ListGroup>
             </div>
