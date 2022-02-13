@@ -33,14 +33,13 @@ const RecipeShow = (props) => {
             const response = await fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=a40e27eb395e4e92a5f5dcb1c521082b`)
             const resData = await response.json()
             setRecipe(resData)
-            console.log(resData)
         }
         fetchData()
     }, [])
 
     return (
         <div>
-            <img src={recipe.image} alt={`Image of ${recipe.title}`} />
+            {recipe.image ? <img src={recipe.image} alt={`Image of ${recipe.title}`} /> : ""}
             <h1>{recipe.title}</h1>
             <Button onClick={() => navigate(-1)} style={{marginBottom: "10px"}}>Back to Results</Button>
             <Table striped bordered hover variant="light">
