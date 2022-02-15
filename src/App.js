@@ -5,9 +5,8 @@ import RecipeGallery from './components/RecipeGallery';
 import SearchBar from './components/SearchBar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import RecipeShow from './components/RecipeShow';
-import { Modal, Button } from 'react-bootstrap'
-
-// Add pagination, use offset like this https://api.spoonacular.com/recipes/complexSearch?query=${search}&offset=10&apiKey=a40e27eb395e4e92a5f5dcb1c521082b
+import { Button } from 'react-bootstrap'
+import { ArrowBarRight, ArrowBarLeft } from 'react-bootstrap-icons'
 
 function App() {
 
@@ -21,7 +20,6 @@ function App() {
       const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&offset=${searchOffset}&apiKey=a40e27eb395e4e92a5f5dcb1c521082b`)
       const resData = await response.json()
       setData(resData)
-      console.log(resData)
     }
     fetchData()
   }, [search, searchOffset])
@@ -36,9 +34,9 @@ function App() {
     return (
       <div>
         <RecipeGallery data={data} />
-        <Button variant="primary" onClick={previousPage}>Previous Page of Results</Button>
-        <Button variant="primary" onClick={nextPage}>Next Page of Results</Button>
-        <p>Page {page} of {Math.ceil(data.totalResults / 10)}</p>
+        <Button variant="light" onClick={previousPage}><ArrowBarLeft size={20}/></Button>
+        <p style={{display: "inline-block", margin: "0 10px 0 10px"}}>Page {page} of {Math.ceil(data.totalResults / 10)}</p>
+        <Button variant="light" onClick={nextPage}><ArrowBarRight size={20} /></Button>
       </div>
     )
   }
@@ -61,7 +59,7 @@ function App() {
 
   return (
     <div className="App">
-      <div id="container">
+      <div id="container" style={{marginBottom: "20px"}}>
         <Router>
           <SearchBar searchForRecipes={searchForRecipes} />
           <Routes>
