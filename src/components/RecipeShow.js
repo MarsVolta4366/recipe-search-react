@@ -35,7 +35,7 @@ const RecipeShow = (props) => {
             setRecipe(resData)
         }
         fetchData()
-    }, [])
+    }, [recipeId])
 
     return (
         <div>
