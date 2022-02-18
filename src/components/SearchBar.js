@@ -18,7 +18,7 @@ const SearchBar = (props) => {
                 </Form.Label>
                 <Form.Control type="text" onChange={(e) => setInput(e.target.value)} placeholder="Search Recipes" />
             </Form.Group>
-            <Link to="/">
+            <Link to="/search">
                 <Button variant="primary" onClick={submitSearch}>Search</Button>
             </Link>
         </Form>
