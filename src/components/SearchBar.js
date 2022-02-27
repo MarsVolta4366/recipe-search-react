@@ -5,13 +5,14 @@ const SearchBar = (props) => {
 
     let [input, setInput] = useState("")
 
-    function submitSearch() {
+    function submitSearch(e) {
+        e.preventDefault()
         props.searchForRecipes(input)
         document.getElementById("searchInput").value = ""
     }
 
     return (
-        <Form id="searchBar">
+        <Form id="searchBar" onSubmit={(e) => submitSearch(e)}>
             <Form.Group className="mb-3" controlId="searchInput">
                 <Form.Label>
                     <h1>Search Recipes</h1>

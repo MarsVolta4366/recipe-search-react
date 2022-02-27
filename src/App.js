@@ -1,3 +1,4 @@
+// Use module 4 activity 1 and 3 to setup database stuff IN NEW BACKEND REPO, git push first?
 import { useEffect, useState } from 'react';
 import React from 'react';
 import './App.css';

@@ -24,7 +24,7 @@ const RecipeGallery = (props) => {
     }
 
     return (
-        <div id="myFlexBox">
+        <div className="myFlexBox">
             {dataDisplay}
         </div>
     )

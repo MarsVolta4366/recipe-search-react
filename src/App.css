@@ -12,7 +12,7 @@
   margin-bottom: 10px;
 }
 
-#myFlexBox {
+.myFlexBox {
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
