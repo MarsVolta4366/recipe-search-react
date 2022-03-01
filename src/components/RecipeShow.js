@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
-import { Button, ListGroup, Table, ToggleButton } from "react-bootstrap"
+import { useParams } from "react-router-dom"
+import { ListGroup, Table, ToggleButton } from "react-bootstrap"
 import { Heart } from "react-bootstrap-icons"
 
-const RecipeShow = (props) => {
+const RecipeShow = () => {
 
     const { recipeId } = useParams()
     let [recipe, setRecipe] = useState({})
@@ -11,7 +11,6 @@ const RecipeShow = (props) => {
 
     let ingredients = []
     let instructions = []
-    let navigate = useNavigate()
 
     if (recipe.extendedIngredients) {
         ingredients = recipe.extendedIngredients.map((ingredient, index) => {
@@ -77,7 +76,7 @@ const RecipeShow = (props) => {
 
     return (
         <div>
-            {recipe.image ? <img src={recipe.image} alt={`Image of ${recipe.title}`} /> : ""}
+            {recipe.image ? <img src={recipe.image} alt={`${recipe.title}`} /> : ""}
             <h1>{recipe.title}</h1>
             <ToggleButton
                 id="toggle-check"
@@ -90,7 +89,6 @@ const RecipeShow = (props) => {
             >
                 <Heart />
             </ToggleButton>
-            <Button onClick={() => navigate(-1)} style={{ marginBottom: "10px", display: "block" }}>Back to Results</Button>
             <Table striped bordered hover variant="light">
                 <thead>
                     <tr>

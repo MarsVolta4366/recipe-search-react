@@ -1,5 +1,32 @@
 .App {
   text-align: center;
+  margin-top: 100px;
+}
+
+#myNav {
+  background-color: #0B0033;
+}
+
+.myLink {
+  color: #aec4ff !important;
+}
+
+.myLink:hover {
+  color: #dae4ff !important;
+}
+
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 500px;
+  width: 100%;
+}
+.fill img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 #container {

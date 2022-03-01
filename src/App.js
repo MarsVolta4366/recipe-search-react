@@ -1,4 +1,3 @@
-// Use module 4 activity 1 and 3 to setup database stuff IN NEW BACKEND REPO, git push first?
 import { useEffect, useState } from 'react';
 import React from 'react';
 import './App.css';
@@ -9,7 +8,6 @@ import RecipeShow from './components/RecipeShow';
 import { Button } from 'react-bootstrap'
 import { ArrowBarRight, ArrowBarLeft } from 'react-bootstrap-icons'
 import NavigationBar from './components/NavigationBar';
-import Home from './components/Home';
 import Favorites from './components/Favorites';
 
 function App() {
@@ -37,6 +35,12 @@ function App() {
   function renderGallery() {
     return (
       <div>
+        <div className="fill">
+          <a href="https://unsplash.com/@brookelark?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+            <img src="../hero-image.jpg" />
+          </a>
+          <p>Photo by <a href="https://unsplash.com/@brookelark?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Brooke Lark</a> on <a href="https://unsplash.com/s/photos/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        </div>
         <SearchBar searchForRecipes={searchForRecipes} />
         <RecipeGallery data={data} />
         <Button variant="light" onClick={previousPage}><ArrowBarLeft size={20} /></Button>
@@ -69,9 +73,6 @@ function App() {
           <NavigationBar />
           <Routes>
             <Route path="/" element={
-              <Home />
-            } />
-            <Route path="/search" element={
               renderGallery()
             } />
             <Route path="/favorites" element={
