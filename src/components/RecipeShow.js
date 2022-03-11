@@ -21,11 +21,13 @@ const RecipeShow = () => {
     }
 
     if (recipe.analyzedInstructions) {
-        instructions = recipe.analyzedInstructions[0].steps.map((step, index) => {
-            return (
-                <ListGroup.Item key={index} as="li">{step.step}</ListGroup.Item>
-            )
-        })
+        if (recipe.analyzedInstructions.length > 0) {
+            instructions = recipe.analyzedInstructions[0].steps.map((step, index) => {
+                return (
+                    <ListGroup.Item key={index} as="li">{step.step}</ListGroup.Item>
+                )
+            })
+        }
     }
 
     useEffect(() => {
@@ -75,8 +77,8 @@ const RecipeShow = () => {
     }
 
     return (
-        <div>
-            {recipe.image ? <img src={recipe.image} alt={`${recipe.title}`} /> : ""}
+        <div className="myContainer">
+            {recipe.image ? <img src={recipe.image} alt={`${recipe.title}`} id="recipeImage" /> : ""}
             <h1>{recipe.title}</h1>
             <ToggleButton
                 id="toggle-check"

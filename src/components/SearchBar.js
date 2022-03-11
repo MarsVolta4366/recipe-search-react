@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, FormControl, ButtonGroup } from "react-bootstrap"
 import { Link } from "react-router-dom"
 const SearchBar = (props) => {
 
@@ -15,13 +15,23 @@ const SearchBar = (props) => {
         <Form id="searchBar" onSubmit={(e) => submitSearch(e)}>
             <Form.Group className="mb-3" controlId="searchInput">
                 <Form.Label>
-                    <h1>Search Recipes</h1>
+                    <h1>Search recipes</h1>
                 </Form.Label>
-                <Form.Control type="text" onChange={(e) => setInput(e.target.value)} placeholder="Search Recipes" />
             </Form.Group>
-            <Link to="/search">
-                <Button variant="primary" onClick={submitSearch}>Search</Button>
-            </Link>
+            <Form.Group>
+                <ButtonGroup aria-label="Basic example">
+                    <FormControl
+                        type="search"
+                        placeholder="Search"
+                        className="me-2"
+                        onChange={(e) => setInput(e.target.value)}
+                        aria-label="Search"
+                        style={{ display: "inline-block", width: "500px" }}
+                        id="searchInput"
+                    />
+                    <Button variant="outline-success" onClick={submitSearch}>Search</Button>
+                </ButtonGroup>
+            </Form.Group>
         </Form>
     )
 }

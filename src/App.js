@@ -35,17 +35,18 @@ function App() {
   function renderGallery() {
     return (
       <div>
-        <div className="fill">
-          <a href="https://unsplash.com/@brookelark?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-            <img src="../hero-image.jpg" />
-          </a>
-          <p>Photo by <a href="https://unsplash.com/@brookelark?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Brooke Lark</a> on <a href="https://unsplash.com/s/photos/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        <div id="heroDiv">
+          <h1 id="heroHeader">Discover delicious recipes!</h1>
+          <img src="../hero-imageB.jpg" alt="Bowl of fruit" id="heroImage" />
         </div>
-        <SearchBar searchForRecipes={searchForRecipes} />
-        <RecipeGallery data={data} />
-        <Button variant="light" onClick={previousPage}><ArrowBarLeft size={20} /></Button>
-        <p style={{ display: "inline-block", margin: "0 10px 0 10px" }}>Page {page} of {Math.ceil(data.totalResults / 10)}</p>
-        <Button variant="light" onClick={nextPage}><ArrowBarRight size={20} /></Button>
+        <div className="myContainer">
+          <p>Photo by <a href="https://unsplash.com/@pwign?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Anh Nguyen</a> on <a href="https://unsplash.com/s/photos/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+          <SearchBar searchForRecipes={searchForRecipes} />
+          <RecipeGallery data={data} />
+          <Button variant="light" onClick={previousPage}><ArrowBarLeft size={20} /></Button>
+          <p style={{ display: "inline-block", margin: "0 10px 0 10px" }}>Page {page} of {Math.ceil(data.totalResults / 10)}</p>
+          <Button variant="light" onClick={nextPage}><ArrowBarRight size={20} /></Button>
+        </div>
       </div>
     )
   }

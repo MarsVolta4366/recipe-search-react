@@ -1,37 +1,44 @@
 .App {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 60px;
+  background-color: #66717E;
+  padding-bottom: 20px;
 }
 
 #myNav {
-  background-color: #0B0033;
+  background-color: #66717E;
 }
 
 .myLink {
-  color: #aec4ff !important;
+  color: #D4D6B9 !important;
 }
 
 .myLink:hover {
-  color: #dae4ff !important;
+  color: #F29E4C !important;
 }
 
-.fill {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  height: 500px;
+#heroImage {
+  width: 150px;
+  height: 100%;
+  display: inline-block;
+}
+
+#heroDiv {
+  margin: 0;
   width: 100%;
-}
-.fill img {
-  flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%;
+  background-color: #66717E;
+  padding: 20px 0 20px 0;
 }
 
-#container {
+#heroHeader {
+  color: #F8F9FA;
+}
+
+.myContainer {
   width: 80%;
   margin: 0 auto;
+  background-color: #F8F9FA;
+  padding: 20px;
 }
 
 #searchBar {
@@ -48,7 +55,29 @@
 }
 
 #myFlexBox>div {
-  background-color: #f1f1f1;
   margin: 10px;
   text-align: center;
+}
+
+.myCard {
+  margin: 10px !important;
+  box-shadow: 1px 1px 5px 1px #aaaaaa;
+  width: 18rem;
+}
+
+.myCard:hover {
+  box-shadow: 1px 1px 10px 1px #aaaaaa;
+}
+
+.cardLink {
+  color: #66717E;
+  text-decoration: none;
+}
+
+.cardLink:hover {
+  color: black;
+}
+
+#recipeImage {
+  box-shadow: 1px 1px 10px 1px #aaaaaa;
 }
