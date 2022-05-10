@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
-import './App.css';
+import './css/styles.css'
 import RecipeGallery from './components/RecipeGallery';
 import SearchBar from './components/SearchBar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
@@ -34,9 +34,9 @@ function App() {
     return (
       <div>
         <RecipeGallery data={data} />
-        <Button variant="light" onClick={previousPage}><ArrowBarLeft size={20}/></Button>
-        <p style={{display: "inline-block", margin: "0 10px 0 10px"}}>Page {page} of {Math.ceil(data.totalResults / 10)}</p>
-        <Button variant="light" onClick={nextPage}><ArrowBarRight size={20} /></Button>
+        <Button variant="light" className="pageButton" onClick={previousPage}><ArrowBarLeft size={20} /></Button>
+        <p style={{ display: "inline-block", margin: "0 10px 0 10px" }}>Page {page} of {Math.ceil(data.totalResults / 10)}</p>
+        <Button variant="light" className="pageButton" onClick={nextPage}><ArrowBarRight size={20} /></Button>
       </div>
     )
   }
@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div className="App">
-      <div id="container" style={{marginBottom: "20px"}}>
+      <div id="container" style={{ marginBottom: "20px" }}>
         <Router>
           <SearchBar searchForRecipes={searchForRecipes} />
           <Routes>

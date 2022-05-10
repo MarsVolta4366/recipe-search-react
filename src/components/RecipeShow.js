@@ -1,12 +1,11 @@
-// Model show page like https://www.foodnetwork.com/recipes/giada-de-laurentiis/israeli-couscous-salad-with-smoked-paprika-recipe-2043334
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { Button, ListGroup, Table } from "react-bootstrap"
 
-const RecipeShow = (props) => {
+const RecipeShow = () => {
 
     const { recipeId } = useParams()
-    let [recipe, setRecipe] = useState({})
+    let [recipe, setRecipe] = useState({ analyzedInstructions: [] })
 
     let ingredients = []
     let instructions = []
@@ -20,12 +19,14 @@ const RecipeShow = (props) => {
         })
     }
 
-    if (recipe.analyzedInstructions) {
+    if (recipe.analyzedInstructions.length > 0 && recipe.analyzedInstructions[0].steps) {
         instructions = recipe.analyzedInstructions[0].steps.map((step, index) => {
             return (
                 <ListGroup.Item key={index} as="li">{step.step}</ListGroup.Item>
             )
         })
+    } else {
+        instructions = <ListGroup.Item>No instructions available</ListGroup.Item>
     }
 
     useEffect(() => {
@@ -39,9 +40,9 @@ const RecipeShow = (props) => {
 
     return (
         <div>
-            {recipe.image ? <img src={recipe.image} alt={`Image of ${recipe.title}`} /> : ""}
+            {recipe.image ? <img src={recipe.image} alt={`${recipe.title}`} /> : ""}
             <h1>{recipe.title}</h1>
-            <Button onClick={() => navigate(-1)} style={{marginBottom: "10px"}}>Back to Results</Button>
+            <Button onClick={() => navigate(-1)} className="backButton" variant="light">Back to Results</Button>
             <Table striped bordered hover variant="light">
                 <thead>
                     <tr>
@@ -63,14 +64,14 @@ const RecipeShow = (props) => {
                 </tbody>
             </Table>
             <div>
-                <h1 style={{textAlign: "left"}}>Ingredients</h1>
-                <ListGroup style={{textAlign: "left"}}>
+                <h1 style={{ textAlign: "left" }}>Ingredients</h1>
+                <ListGroup style={{ textAlign: "left" }}>
                     {ingredients}
                 </ListGroup>
             </div>
             <div>
-                <h1 style={{textAlign: "left"}}>Instructions</h1>
-                <ListGroup as="ol" numbered style={{textAlign: "left"}}>
+                <h1 style={{ textAlign: "left" }}>Instructions</h1>
+                <ListGroup as="ol" numbered style={{ textAlign: "left" }}>
                     {instructions}
                 </ListGroup>
             </div>
