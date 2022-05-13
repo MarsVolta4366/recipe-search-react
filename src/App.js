@@ -10,10 +10,11 @@ import { ArrowBarRight, ArrowBarLeft } from 'react-bootstrap-icons'
 
 function App() {
 
-  let [search, setSearch] = useState("")
-  let [data, setData] = useState([])
-  let [page, setPage] = useState(1)
-  let [searchOffset, setSearchOffset] = useState(0)
+  const [search, setSearch] = useState("")
+  const [data, setData] = useState([])
+  const [foodJoke, setFoodJoke] = useState("")
+  const [page, setPage] = useState(1)
+  const [searchOffset, setSearchOffset] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +24,12 @@ function App() {
     }
     fetchData()
   }, [search, searchOffset])
+
+  async function fetchFoodJoke() {
+    const jokeResponse = await fetch("https://api.spoonacular.com/food/jokes/random?apiKey=a40e27eb395e4e92a5f5dcb1c521082b")
+    const jokeData = await jokeResponse.json()
+    setFoodJoke(jokeData.text)
+  }
 
   function searchForRecipes(input) {
     setPage(1)
@@ -34,9 +41,11 @@ function App() {
     return (
       <div>
         <RecipeGallery data={data} />
-        <Button variant="light" className="pageButton" onClick={previousPage}><ArrowBarLeft size={20} /></Button>
-        <p style={{ display: "inline-block", margin: "0 10px 0 10px" }}>Page {page} of {Math.ceil(data.totalResults / 10)}</p>
-        <Button variant="light" className="pageButton" onClick={nextPage}><ArrowBarRight size={20} /></Button>
+        <div style={{ marginTop: "10px" }}>
+          <Button variant="light" className="pageButton" onClick={previousPage}><ArrowBarLeft size={20} /></Button>
+          <p style={{ display: "inline-block", margin: "0 10px 0 10px" }}>Page {page} of {Math.ceil(data.totalResults / 10)}</p>
+          <Button variant="light" className="pageButton" onClick={nextPage}><ArrowBarRight size={20} /></Button>
+        </div>
       </div>
     )
   }
@@ -71,9 +80,12 @@ function App() {
             } />
           </Routes>
         </Router>
+        <Button variant="light" className="backButton" onClick={fetchFoodJoke}
+          style={{ marginTop: "10px" }}>Wanna hear a food joke?</Button>
+        <p>{foodJoke}</p>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

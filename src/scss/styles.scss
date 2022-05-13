@@ -40,7 +40,9 @@ $darkBackground: #161B22;
 }
 
 .pageButton {
-    color: #545454 !important;
+    color: #696969 !important;
+    background-color: white !important;
+    border: none !important;
 
     &:hover {
         color: black !important;
@@ -50,10 +52,23 @@ $darkBackground: #161B22;
 .backButton {
     margin-bottom: 10px !important;
     color: #696969 !important;
+    border: none !important;
     border-bottom: 1px solid #dcdcdc !important;
+    background-color: white !important;
+    border-radius: 0 !important;
 
     &:hover {
         color: black !important;
         border-bottom: 1px solid black !important;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .hideOnMediaQuery {
+        display: none !important;
+    }
+
+    #container {
+        width: 100% !important;
     }
 }

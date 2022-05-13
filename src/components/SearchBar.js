@@ -30,7 +30,7 @@ const SearchBar = (props) => {
                         }} />
                 </InputGroup>
                 <Navbar.Collapse className="justify-content-end" style={{ marginLeft: "16px" }}>
-                    <Navbar.Text style={{ whiteSpace: "nowrap" }}>
+                    <Navbar.Text style={{ whiteSpace: "nowrap" }} className="hideOnMediaQuery">
                         Made by <a href="https://portfolio-dfs.herokuapp.com/" target="_blank" rel="noreferrer">Derek Slauson</a>
                     </Navbar.Text>
                 </Navbar.Collapse>
