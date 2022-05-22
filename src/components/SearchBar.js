@@ -12,8 +12,8 @@ const SearchBar = (props) => {
     }
 
     return (
-        <Navbar style={{ backgroundColor: "white" }}>
-            <Container>
+        <Navbar>
+            <Container className="myContainer">
                 <Navbar.Brand href="/">Recipe Search React</Navbar.Brand>
                 <InputGroup style={{ width: "100%", cursor: "pointer" }}>
                     <InputGroup.Text onClick={submitSearch}>

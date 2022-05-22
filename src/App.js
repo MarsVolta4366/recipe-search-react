@@ -18,9 +18,9 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&offset=${searchOffset}&apiKey=a40e27eb395e4e92a5f5dcb1c521082b`)
-      const resData = await response.json()
-      setData(resData)
+      // const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&offset=${searchOffset}&apiKey=a40e27eb395e4e92a5f5dcb1c521082b`)
+      // const resData = await response.json()
+      // setData(resData)
     }
     fetchData()
   }, [search, searchOffset])
@@ -40,7 +40,7 @@ function App() {
   function renderGallery() {
     return (
       <div>
-        <RecipeGallery data={data} />
+        {/* <RecipeGallery data={data} /> */}
         <div style={{ marginTop: "10px" }}>
           <Button variant="light" className="pageButton" onClick={previousPage}><ArrowBarLeft size={20} /></Button>
           <p style={{ display: "inline-block", margin: "0 10px 0 10px" }}>Page {page} of {Math.ceil(data.totalResults / 10)}</p>
